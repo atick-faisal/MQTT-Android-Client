@@ -5,7 +5,7 @@
   <img src="client.png"/>
 </p>
 
-## Features
+### Features
 |                     |                    |   |                      |                    |
 |---------------------|--------------------|---|----------------------|--------------------|
 | MQTT 3.1            | :heavy_check_mark: |   | Automatic Reconnect  | :heavy_check_mark: |
