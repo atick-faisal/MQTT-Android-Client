@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="16dp"
+    android:layout_marginTop="24dp"
+    android:layout_marginRight="16dp"
+    android:layout_marginBottom="24dp"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/image_icon"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:src="@drawable/cloud"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:text="MQTT Client"
+            android:textAlignment="center"
+            android:textSize="20sp"/>
+
+        <EditText
+            android:id="@+id/broker_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Broker Address"
+            android:text="broker.hivemq.com"
+            android:textColor="#707070"
+            android:textAlignment="center" />
+
+        <Button
+            android:id="@+id/connect_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Connect" />
+
+        <Button
+            android:id="@+id/disconnect_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:text="Disconnect"
+            android:textColor="#D32F2F" />
+
+        <LinearLayout
+            android:id="@+id/comm_section"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <EditText
+                android:id="@+id/tx_topic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Topic Name"
+                android:text="__some_topic__"
+                android:textColor="#5c6bc0"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/tx_message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Your Message"
+                android:text="{ temp: 34, hum: 34, light: 90 }"
+                android:textColor="#707070"
+                android:textAlignment="center" />
+
+            <Button
+                android:id="@+id/send_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Send" />
+
+            <EditText
+                android:id="@+id/rx_topic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#5c6bc0"
+                android:text="__some_topic__"
+                android:hint="Subscription Topic"
+                android:textAlignment="center" />
+
+            <Button
+                android:id="@+id/subscribe_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Subscribe" />
+
+            <TextView
+                android:id="@+id/rx_message"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:layout_margin="4dp"
+                android:background="#212121"
+                android:padding="4dp"
+                android:maxLines="10"
+                android:textColor="#388e3c"
+                android:visibility="gone"
+                android:scrollbars="vertical"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>
