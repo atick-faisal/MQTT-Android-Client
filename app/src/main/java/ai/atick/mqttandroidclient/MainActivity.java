@@ -89,16 +89,16 @@ public class MainActivity extends AppCompatActivity {
         __tx_topic = tinyDB.getString("TX_TOPIC");
         __rx_topic = tinyDB.getString("RX_TOPIC");
         __tx_message = tinyDB.getString("TX_MSG");
-        if(!__broker_address.equals("")) {
+        if (!__broker_address.isEmpty()) {
             brokerAddress.setText(__broker_address);
         }
-        if(!__tx_topic.equals("")) {
+        if (!__tx_topic.isEmpty()) {
             txTopic.setText(__tx_topic);
         }
-        if(!__rx_topic.equals("")) {
+        if (!__rx_topic.isEmpty()) {
             rxTopic.setText(__rx_topic);
         }
-        if(!__tx_message.equals("")) {
+        if (!__tx_message.isEmpty()) {
             txMessage.setText(__tx_message);
         }
 
@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 __broker_address = brokerAddress.getText().toString();
-                if (!__broker_address.equals("")) {
+                if (!__broker_address.isEmpty()) {
                     tinyDB.putString("BROKER_ADDRESS", __broker_address);
                     String brokerURL = "tcp://" + __broker_address + ":1883";
                     connectToBroker(brokerURL);
@@ -128,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 __tx_topic = txTopic.getText().toString();
                 __tx_message = txMessage.getText().toString();
-                if (!__tx_topic.equals("")) {
+                if (!__tx_topic.isEmpty()) {
                     tinyDB.putString("TX_MSG", __tx_message);
                     tinyDB.putString("TX_TOPIC", __tx_topic);
                     sendMessage(__tx_topic, __tx_message);
@@ -143,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 rxMessage.setVisibility(View.VISIBLE);
                 __rx_topic = rxTopic.getText().toString();
-                if (!__rx_topic.equals("")) {
+                if (!__rx_topic.isEmpty()) {
                     tinyDB.putString("RX_TOPIC", __rx_topic);
                     subscribeToTopic(__rx_topic);
                 }
@@ -176,7 +176,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         } catch (MqttException e) {
-            e.printStackTrace();
+            Toast.makeText(getApplicationContext(), "Failed to Connect: " + e, Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -188,7 +188,7 @@ public class MainActivity extends AppCompatActivity {
             client.publish(topic, message);
             Toast.makeText(getApplicationContext(), "Sent", Toast.LENGTH_SHORT).show();
         } catch (MqttException e) {
-            e.printStackTrace();
+            Toast.makeText(getApplicationContext(), "Failed to Send Message: " + e, Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -254,7 +254,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
             } catch (MqttException e) {
-                e.printStackTrace();
+                Toast.makeText(getApplicationContext(), "Failed to Disconnect: " + e, Toast.LENGTH_SHORT).show();
             }
         }
     }
